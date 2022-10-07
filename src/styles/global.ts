@@ -12,9 +12,8 @@ export const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme['base-text']}
   }
 
-  body, input, span, h1, h2, h3, h4, h5, h6, strong, button {
+  body, input, span, h1, h2, h3, h4, h5, h6, strong, button, text {
     font-family: 'Nunito', sans-serif;
-    font-weight: 400;
     font-size: 1rem;
   }
 `
