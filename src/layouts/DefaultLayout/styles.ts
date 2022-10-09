@@ -3,8 +3,10 @@ import styled from 'styled-components'
 export const DefaultLayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  /* min-height: 100vh; */
+  height: fit-content;
   align-items: center;
+  padding-bottom: 2rem;
 `
 
 export const CoverContainer = styled.div`
@@ -46,9 +48,9 @@ export const MidRectangle = styled.img`
   width: 100%;
 `
 
-export const ContnetContainer = styled.main`
-  position: absolute;
-  top: 208px;
+export const ContnetContainer = styled.div`
+  z-index: 1;
+  margin-top: -100px;
   width: 864px;
 `
 
