@@ -1,62 +1,19 @@
-import { PostList, Input, Profile as ProfileComponet } from '@/components'
+import { PostList, Profile as ProfileComponet } from '@/components'
+import { useCallback, useEffect, useState } from 'react'
 import { Profile } from '@/models/profile'
 import {
   SearchIssuesResposta,
   useGetGithubProfile,
   useSearchIssuesByRepo,
 } from '@/services'
-import { useCallback, useEffect, useState } from 'react'
+import { SearchForm } from './components/SearchForm'
+
 import {
   HomeContainer,
   PostsContainer,
   PostsHead,
   PostsTitleContainer,
 } from './styles'
-
-// const posts = [
-//   {
-//     id: 1,
-//     title: 'JavaScript data types and data structures',
-//     description:
-//       'Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in...',
-//     creationDate: new Date(),
-//   },
-//   {
-//     id: 2,
-//     title: 'JavaScript data types and data structures',
-//     description:
-//       'Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in...',
-//     creationDate: new Date(),
-//   },
-//   {
-//     id: 3,
-//     title: 'JavaScript data types and data structures',
-//     description:
-//       'Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in...',
-//     creationDate: new Date(),
-//   },
-//   {
-//     id: 4,
-//     title: 'JavaScript data types and data structures',
-//     description:
-//       'Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in...',
-//     creationDate: new Date(),
-//   },
-//   {
-//     id: 5,
-//     title: 'JavaScript data types and data structures',
-//     description:
-//       'Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in...',
-//     creationDate: new Date(),
-//   },
-//   {
-//     id: 6,
-//     title: 'JavaScript data types and data structures',
-//     description:
-//       'Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in...',
-//     creationDate: new Date(),
-//   },
-// ]
 
 export function Home() {
   const [profile, setProfile] = useState<Profile | null>()
@@ -66,7 +23,7 @@ export function Home() {
   const [getGithubProfile] = useGetGithubProfile()
   const [searchIssuesByRepo] = useSearchIssuesByRepo()
 
-  const handleSearchIssues = useCallback(
+  const searchIssues = useCallback(
     (searchString: string) => {
       searchIssuesByRepo({
         username: 'ruanpablom',
@@ -86,10 +43,10 @@ export function Home() {
   }, [getGithubProfile])
 
   useEffect(() => {
-    handleSearchIssues('')
-  }, [handleSearchIssues])
+    searchIssues('')
+  }, [searchIssues])
 
-  const posts = searchIssuesResult?.items
+  const posts = searchIssuesResult?.items || []
 
   return (
     <HomeContainer>
@@ -103,7 +60,7 @@ export function Home() {
           followersQtd={profile.followers}
         />
       )}
-      {posts && posts.length > 0 && (
+      {posts && (
         <PostsContainer>
           <PostsHead>
             <PostsTitleContainer>
@@ -112,7 +69,7 @@ export function Home() {
                 posts.length === 1 ? 'publicação' : 'publicações'
               }`}</span>
             </PostsTitleContainer>
-            <Input name="searchInput" placeholder="Buscar conteúdo" />
+            <SearchForm searchIssues={searchIssues} />
           </PostsHead>
           <PostList posts={posts} />
         </PostsContainer>
