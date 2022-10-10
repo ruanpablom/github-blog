@@ -1,6 +1,10 @@
-import { PostList } from '@/components/Post'
-import { Profile } from '@/components/Profile'
-import { HomeContainer } from './styles'
+import { PostList, Input, Profile } from '@/components'
+import {
+  HomeContainer,
+  PostsContainer,
+  PostsHead,
+  PostsTitleContainer,
+} from './styles'
 
 const posts = [
   {
@@ -58,7 +62,18 @@ export function Home() {
         company="RocketSeat"
         followersQtd={11}
       />
-      <PostList posts={posts} />
+      <PostsContainer>
+        <PostsHead>
+          <PostsTitleContainer>
+            <strong>Publicações</strong>
+            <span>{`${posts.length} ${
+              posts.length === 1 ? 'publicação' : 'publicações'
+            }`}</span>
+          </PostsTitleContainer>
+          <Input name="searchInput" placeholder="Buscar conteúdo" />
+        </PostsHead>
+        <PostList posts={posts} />
+      </PostsContainer>
     </HomeContainer>
   )
 }
