@@ -3,13 +3,15 @@ import styled from 'styled-components'
 export const DefaultLayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* min-height: 100vh; */
   height: fit-content;
   align-items: center;
   padding-bottom: 2rem;
 `
 
 export const CoverContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   width: 100%;
   height: 296px;
@@ -41,11 +43,7 @@ export const EllipseRight = styled.img`
 
 export const MidRectangle = styled.img`
   position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   bottom: 0;
-  width: 100%;
 `
 
 export const ContnetContainer = styled.div`
