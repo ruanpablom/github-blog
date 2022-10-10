@@ -14,7 +14,7 @@ export const PostItemContainer = styled.li`
   cursor: pointer;
 
   :hover {
-    border: 2px solid ${(props) => props.theme['base-span']};
+    border: 2px solid ${(props) => props.theme['base-label']};
   }
 `
 
