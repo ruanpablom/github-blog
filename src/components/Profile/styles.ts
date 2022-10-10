@@ -7,12 +7,12 @@ export const ProfileContainer = styled.section`
   gap: 32px;
   background-color: ${(props) => props.theme['base-profile']};
   border-radius: 10px;
+`
 
-  img {
-    width: 148px;
-    height: 148px;
-    border-radius: 8px;
-  }
+export const Avatar = styled.img`
+  width: 148px;
+  height: 148px;
+  border-radius: 8px;
 `
 
 export const InfoContainer = styled.div`
@@ -28,7 +28,7 @@ export const Header = styled.div`
   justify-content: space-between;
   width: 100%;
 
-  a {
+  /* a {
     display: flex;
     gap: 8px;
     color: ${(props) => props.theme.blue};
@@ -43,7 +43,7 @@ export const Header = styled.div`
     &:hover {
       border-bottom: 1px solid ${(props) => props.theme.blue};
     }
-  }
+  } */
 `
 
 export const Name = styled.strong`

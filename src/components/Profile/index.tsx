@@ -1,13 +1,15 @@
 /* eslint-disable camelcase */
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faArrowUpRightFromSquare,
   faBuilding,
   faUserGroup,
+  faArrowUpRightFromSquare,
 } from '@fortawesome/free-solid-svg-icons'
 import githubIcon from '@/assets/icons/github.svg'
+import { Profile as ProfileModel } from '@/models/profile'
+import { IconSpan, AnchorIcon } from '@/components'
 
 import {
+  Avatar,
   Bio,
   Footer,
   Header,
@@ -15,8 +17,6 @@ import {
   Name,
   ProfileContainer,
 } from './styles'
-import { Profile as ProfileModel } from '@/models/profile'
-import { IconSpan } from '../IconSpan'
 
 interface ProfileProps extends Omit<ProfileModel, 'avatar_url' | 'followers'> {
   avatarUrl: string
@@ -33,14 +33,17 @@ export function Profile({
 }: ProfileProps) {
   return (
     <ProfileContainer>
-      <img src={avatarUrl} alt={name} />
+      <Avatar src={avatarUrl} alt={name} />
       <InfoContainer>
         <Header>
           <Name>{name}</Name>
-          <a href={`https://github.com/${login}`}>
+          <AnchorIcon
+            href={`https://github.com/${login}`}
+            iconProps={{ icon: faArrowUpRightFromSquare }}
+            iconPosition="left"
+          >
             GITHUB
-            <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-          </a>
+          </AnchorIcon>
         </Header>
         {!!bio && <Bio>{bio}</Bio>}
         <Footer>
