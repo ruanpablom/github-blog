@@ -1,12 +1,11 @@
 import { useCallback, useState } from 'react'
 import { AxiosError } from 'axios'
 import { githubApi } from '@/services'
-import { Profile } from '@/models/profile'
 import {
   SearchIssuesByRepoParams,
+  SearchIssuesResposta,
   UseSearchIssuesByRepoResponse,
 } from './types'
-import { Issue } from '@/models'
 
 export function useSearchIssuesByRepo(): UseSearchIssuesByRepoResponse {
   const [loading, setLoading] = useState<boolean>(false)
@@ -17,15 +16,12 @@ export function useSearchIssuesByRepo(): UseSearchIssuesByRepoResponse {
       try {
         setLoading(true)
 
-        const { data: result } = await githubApi.get<{
-          total_count: number
-          incomplete_results: boolean
-          items: Issue[]
-        } | null>(`/search/issues`, {
-          params: {
-            q: `${searchString} repo:${username}/${repo}`,
-          },
-        })
+        const { data: result } =
+          await githubApi.get<SearchIssuesResposta | null>(`/search/issues`, {
+            params: {
+              q: `${searchString} repo:${username}/${repo}`,
+            },
+          })
 
         return result || null
       } catch (error) {

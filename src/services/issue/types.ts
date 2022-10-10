@@ -14,10 +14,6 @@ export type SearchIssuesResposta = {
 }
 
 export type UseSearchIssuesByRepoResponse = [
-  (data: SearchIssuesByRepoParams) => Promise<{
-    total_count: number
-    incomplete_results: boolean
-    items: Issue[]
-  } | null>,
+  (data: SearchIssuesByRepoParams) => Promise<SearchIssuesResposta | null>,
   { loading: boolean; error: AxiosError | null },
 ]
