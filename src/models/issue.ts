@@ -8,5 +8,5 @@ export type Issue = {
   }
   created_at: string
   comments: number
-  url: string
+  html_url: string
 }

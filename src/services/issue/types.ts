@@ -17,3 +17,14 @@ export type UseSearchIssuesByRepoResponse = [
   (data: SearchIssuesByRepoParams) => Promise<SearchIssuesResposta | null>,
   { loading: boolean; error: AxiosError | null },
 ]
+
+export type GetIssueParams = {
+  username: string
+  repo: string
+  issueNumber: number
+}
+
+export type UseGetIssueReponse = [
+  (data: GetIssueParams) => Promise<Issue | null>,
+  { loading: boolean; error: AxiosError | null },
+]
