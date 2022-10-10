@@ -35,8 +35,13 @@ export const CreationDate = styled.span`
   color: ${(props) => props.theme['base-span']};
 `
 
-export const Description = styled.span`
+export const Description = styled.p`
+  display: -webkit-box;
   font-size: 1rem;
+  line-height: 160%;
   color: ${(props) => props.theme['base-text']};
   width: 100%;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `
