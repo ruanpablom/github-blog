@@ -51,7 +51,7 @@ export const Name = styled.strong`
   font-size: 1.5rem;
 `
 
-export const Bio = styled.text`
+export const Bio = styled.span`
   font-style: normal;
 `
 

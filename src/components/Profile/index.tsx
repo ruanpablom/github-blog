@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faArrowUpRightFromSquare,
@@ -15,14 +16,11 @@ import {
   ProfileContainer,
   TextIcon,
 } from './styles'
+import { Profile as ProfileModel } from '@/models/profile'
 
-interface ProfileProps {
+interface ProfileProps extends Omit<ProfileModel, 'avatar_url' | 'followers'> {
   avatarUrl: string
-  name: string
-  login: string
-  bio?: string
-  company?: string
-  followersQtd?: number
+  followersQtd: number | null
 }
 
 export function Profile({

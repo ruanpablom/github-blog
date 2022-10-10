@@ -1,4 +1,7 @@
-import { PostList, Input, Profile } from '@/components'
+import { PostList, Input, Profile as ProfileComponet } from '@/components'
+import { Profile } from '@/models/profile'
+import { useGetGithubProfile } from '@/services'
+import { useEffect, useState } from 'react'
 import {
   HomeContainer,
   PostsContainer,
@@ -52,16 +55,27 @@ const posts = [
 ]
 
 export function Home() {
+  const [profile, setProfile] = useState<Profile | null>()
+  const [getGithubProfile] = useGetGithubProfile()
+
+  useEffect(() => {
+    getGithubProfile({ username: 'ruanpablom' }).then((profile) => {
+      setProfile(profile)
+    })
+  }, [getGithubProfile])
+
   return (
     <HomeContainer>
-      <Profile
-        avatarUrl="https://avatars.githubusercontent.com/u/10927682?v=4"
-        name="Ruan Pablo Medeiros"
-        bio="Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat pulvinar vel mass."
-        login="ruanpablom"
-        company="RocketSeat"
-        followersQtd={11}
-      />
+      {profile && (
+        <ProfileComponet
+          avatarUrl={profile.avatar_url}
+          name={profile.name}
+          bio={profile.bio}
+          login={profile.login}
+          company={profile.company}
+          followersQtd={profile.followers}
+        />
+      )}
       <PostsContainer>
         <PostsHead>
           <PostsTitleContainer>

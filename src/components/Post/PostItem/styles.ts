@@ -35,7 +35,7 @@ export const CreationDate = styled.span`
   color: ${(props) => props.theme['base-span']};
 `
 
-export const Description = styled.text`
+export const Description = styled.span`
   font-size: 1rem;
   color: ${(props) => props.theme['base-text']};
   width: 100%;
