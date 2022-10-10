@@ -1,8 +1,8 @@
 import { Input } from '@/components'
 import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { SearchFormProps } from './types'
 import { SearchFormInputs, searchFormSchema } from './schema'
-import { zodResolver } from '@hookform/resolvers/zod'
 
 import { SearchFormContainer } from './styles'
 
