@@ -14,9 +14,9 @@ import {
   InfoContainer,
   Name,
   ProfileContainer,
-  TextIcon,
 } from './styles'
 import { Profile as ProfileModel } from '@/models/profile'
+import { IconSpan } from '../IconSpan'
 
 interface ProfileProps extends Omit<ProfileModel, 'avatar_url' | 'followers'> {
   avatarUrl: string
@@ -44,23 +44,29 @@ export function Profile({
         </Header>
         {!!bio && <Bio>{bio}</Bio>}
         <Footer>
-          <TextIcon>
-            <img src={githubIcon} alt="github" />
-            <span>{login}</span>
-          </TextIcon>
+          <IconSpan
+            icon={githubIcon}
+            spanColor="base-subtitle"
+            iconColor="base-label"
+            text={login}
+          />
           {!!company && (
-            <TextIcon>
-              <FontAwesomeIcon icon={faBuilding} />
-              <span>{company}</span>
-            </TextIcon>
+            <IconSpan
+              icon={faBuilding}
+              spanColor="base-subtitle"
+              iconColor="base-label"
+              text={company}
+            />
           )}
           {!!followersQtd && (
-            <TextIcon>
-              <FontAwesomeIcon icon={faUserGroup} />
-              <span>{`${followersQtd} ${
+            <IconSpan
+              icon={faUserGroup}
+              spanColor="base-subtitle"
+              iconColor="base-label"
+              text={`${followersQtd} ${
                 followersQtd > 1 ? 'seguidores' : 'seguidor'
-              }`}</span>
-            </TextIcon>
+              }`}
+            />
           )}
         </Footer>
       </InfoContainer>
