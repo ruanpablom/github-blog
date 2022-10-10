@@ -9,7 +9,15 @@ export const PostItemContainer = styled.li`
   padding: 32px;
   background-color: ${(props) => props.theme['base-post']};
   border-radius: 10px;
+  border: 2px solid transparent;
+  transition: 0.2s;
+  cursor: pointer;
+
+  :hover {
+    border: 2px solid ${(props) => props.theme['base-span']};
+  }
 `
+
 export const TopContainer = styled.div`
   display: flex;
   gap: 1rem;
