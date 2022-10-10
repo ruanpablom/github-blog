@@ -1,6 +1,8 @@
 import { formatDistanceToNow, parseISO } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 import { PostItemProps } from './types'
+import { useNavigate } from 'react-router-dom'
+
 import {
   CreationDate,
   Description,
@@ -10,10 +12,11 @@ import {
 } from './styles'
 
 export function PostItem({ post }: PostItemProps) {
-  const { title, created_at: createdAt, body } = post
+  const { title, created_at: createdAt, body, number } = post
+  const navigate = useNavigate()
 
   return (
-    <PostItemContainer>
+    <PostItemContainer onClick={() => navigate(`/post/${number}`)}>
       <TopContainer>
         <Title>{title}</Title>
         <CreationDate>
