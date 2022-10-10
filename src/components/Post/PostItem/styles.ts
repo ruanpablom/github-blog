@@ -5,7 +5,7 @@ export const PostItemContainer = styled.li`
   flex-direction: column;
   gap: 1.25rem;
   width: 416px;
-  max-height: 260px;
+  height: 260px;
   padding: 32px;
   background-color: ${(props) => props.theme['base-post']};
   border-radius: 10px;

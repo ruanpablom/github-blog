@@ -1,5 +1,5 @@
-import { Post } from '@/models'
+import { Issue } from '@/models'
 
 export interface PostListProps {
-  posts: Post[]
+  posts: Issue[]
 }
