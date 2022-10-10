@@ -44,6 +44,7 @@ export const EllipseRight = styled.img`
 export const MidRectangle = styled.img`
   position: absolute;
   bottom: 0;
+  max-width: 100%;
 `
 
 export const ContnetContainer = styled.div`
