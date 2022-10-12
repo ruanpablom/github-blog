@@ -40,7 +40,7 @@ export function Profile({
           <AnchorIcon
             href={`https://github.com/${login}`}
             iconProps={{ icon: faArrowUpRightFromSquare }}
-            iconPosition="left"
+            iconPosition="right"
           >
             GITHUB
           </AnchorIcon>
