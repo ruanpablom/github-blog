@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { IconSpanProps } from './types'
 
-type ISProps = {} & Omit<IconSpanProps, 'icon' | 'text'>
+type ISProps = Omit<IconSpanProps, 'icon' | 'text'>
 
 export const IconSpanContainer = styled.div<ISProps>`
   display: flex;
