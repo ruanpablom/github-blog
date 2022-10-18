@@ -20,6 +20,7 @@ import {
   PostInfosHead,
   PostTitle,
 } from './styles'
+import { ArticleContent } from './ArticleContent'
 
 export function Post() {
   const { issueNumber } = useParams()
@@ -42,49 +43,52 @@ export function Post() {
   return (
     <PostContainer>
       {post && (
-        <PostInfosContainer>
-          <PostInfosHead>
-            <AnchorIcon
-              iconProps={{ icon: faChevronLeft }}
-              iconPosition="left"
-              onClick={() => navigate('/')}
-            >
-              VOLTAR
-            </AnchorIcon>
-            <AnchorIcon
-              href={post.html_url}
-              iconProps={{ icon: faArrowUpRightFromSquare }}
-              iconPosition="right"
-            >
-              VER NO GITHUB
-            </AnchorIcon>
-          </PostInfosHead>
-          <PostTitle>{post.title}</PostTitle>
-          <PostInfosFoot>
-            <IconSpan
-              icon={githubIcon}
-              spanColor="base-span"
-              iconColor="base-label"
-              text={post.user.login}
-            />
-            <IconSpan
-              icon={faCalendarDay}
-              spanColor="base-span"
-              iconColor="base-label"
-              text={`Há ${formatDistanceToNow(parseISO(post.created_at), {
-                locale: ptBR,
-              })}`}
-            />
-            <IconSpan
-              icon={faComment}
-              spanColor="base-span"
-              iconColor="base-label"
-              text={`${post.comments} ${
-                post.comments === 1 ? 'comentário' : 'comentários'
-              }`}
-            />
-          </PostInfosFoot>
-        </PostInfosContainer>
+        <>
+          <PostInfosContainer>
+            <PostInfosHead>
+              <AnchorIcon
+                iconProps={{ icon: faChevronLeft }}
+                iconPosition="left"
+                onClick={() => navigate('/')}
+              >
+                VOLTAR
+              </AnchorIcon>
+              <AnchorIcon
+                href={post.html_url}
+                iconProps={{ icon: faArrowUpRightFromSquare }}
+                iconPosition="right"
+              >
+                VER NO GITHUB
+              </AnchorIcon>
+            </PostInfosHead>
+            <PostTitle>{post.title}</PostTitle>
+            <PostInfosFoot>
+              <IconSpan
+                icon={githubIcon}
+                spanColor="base-span"
+                iconColor="base-label"
+                text={post.user.login}
+              />
+              <IconSpan
+                icon={faCalendarDay}
+                spanColor="base-span"
+                iconColor="base-label"
+                text={`Há ${formatDistanceToNow(parseISO(post.created_at), {
+                  locale: ptBR,
+                })}`}
+              />
+              <IconSpan
+                icon={faComment}
+                spanColor="base-span"
+                iconColor="base-label"
+                text={`${post.comments} ${
+                  post.comments === 1 ? 'comentário' : 'comentários'
+                }`}
+              />
+            </PostInfosFoot>
+          </PostInfosContainer>
+          <ArticleContent>{`${post.body}`}</ArticleContent>
+        </>
       )}
     </PostContainer>
   )
